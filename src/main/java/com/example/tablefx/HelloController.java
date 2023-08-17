@@ -21,6 +21,45 @@ public class HelloController {
     @FXML
     Button button;
 
+
+    public void initialize()
+    {
+        try {
+            makeTable(read("1.txt"));
+        } catch (FileNotFoundException e) {
+            System.out.println("не открылось");
+        }
+    }
+    public ObservableList<Triangle> read(String filename) throws FileNotFoundException {
+        File file=new File(filename);
+        Scanner scanner=new Scanner(file);
+        ObservableList<Triangle> triangleObservableList = FXCollections.observableArrayList();
+        String a,b,c;
+        while (scanner.hasNext()){
+            a = scanner.next();
+            b= scanner.next();
+            c= scanner.next();
+            triangleObservableList.add(new Triangle(a,b,c));
+        }
+        return triangleObservableList;
+    }
+
+    public void makeTable(ObservableList<Triangle> triangleObservableList)
+    {
+        //TableView<Triangle> tableView=new TableView<>(triangleObservableList);
+        TableColumn<Triangle, String> aColumn=new TableColumn<>("A");
+        aColumn.setCellValueFactory(new PropertyValueFactory<Triangle,String>("x"));
+        tableView.getColumns().add(aColumn);
+        TableColumn<Triangle, String> bColumn=new TableColumn<>("B");
+        bColumn.setCellValueFactory(new PropertyValueFactory<Triangle,String>("y"));
+        tableView.getColumns().add(bColumn);
+        TableColumn<Triangle, String> cColumn=new TableColumn<>("C");
+        cColumn.setCellValueFactory(new PropertyValueFactory<Triangle,String>("z"));
+        tableView.getColumns().add(cColumn);
+
+        tableView.setItems(triangleObservableList);
+    }
+
     public  List<String> read() throws FileNotFoundException {
         String a=null;
         String b=null;
@@ -36,6 +75,7 @@ public class HelloController {
             c=list.get(2);
             line++;
         }
+
         ObservableList<Triangle> triangleObservableList = FXCollections.observableArrayList(
                 new Triangle(a,b,c),
                 new Triangle(a,b,c),

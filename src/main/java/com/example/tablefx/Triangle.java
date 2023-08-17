@@ -31,4 +31,16 @@ public class Triangle {
     public void setC(String value) {
         z.set(value);
     }
+
+    public SimpleStringProperty xProperty() {
+        return x;
+    }
+
+    public SimpleStringProperty yProperty() {
+        return y;
+    }
+
+    public SimpleStringProperty zProperty() {
+        return z;
+    }
 }
