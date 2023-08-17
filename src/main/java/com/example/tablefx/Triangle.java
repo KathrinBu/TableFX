@@ -8,8 +8,6 @@ public class Triangle {
     private SimpleDoubleProperty perimeter = new SimpleDoubleProperty();
     private SimpleDoubleProperty area = new SimpleDoubleProperty();
 
-
-
     public Triangle(double x, double y, double z) {
         this.x = new SimpleDoubleProperty(x);
         this.y = new SimpleDoubleProperty(y);
