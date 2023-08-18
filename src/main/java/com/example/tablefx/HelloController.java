@@ -37,11 +37,11 @@ public class HelloController {
         File file=new File(filename);
         Scanner scanner=new Scanner(file);
         ObservableList<Triangle> triangleObservableList = FXCollections.observableArrayList();
-        String a,b,c;
+        double a,b,c;
         while (scanner.hasNext()){
-            a = scanner.next();
-            b= scanner.next();
-            c= scanner.next();
+            a = scanner.nextDouble();
+            b= scanner.nextDouble();
+            c= scanner.nextDouble();
             triangleObservableList.add(new Triangle(a,b,c));
         }
         return triangleObservableList;
@@ -51,7 +51,7 @@ public class HelloController {
 
     public void makeTable(ObservableList<Triangle> triangleObservableList)
     {
-
+        tableView.getColumns().clear();
         TableColumn<Triangle, Double> aColumn=new TableColumn<>("C");
         aColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         tableView.getColumns().add(aColumn);

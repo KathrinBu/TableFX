@@ -13,7 +13,7 @@ public class Triangle {
         this.y = new SimpleDoubleProperty(y);
         this.z = new SimpleDoubleProperty(z);
 
-        {//секция инициализации
+        {
             this.x.addListener((s1, o,n)->{
                 this.perimeter.set(perimeter());
                 this.area.set(area());
@@ -51,12 +51,12 @@ public class Triangle {
         z.set(value);
     }
 
-    public Triangle(String x, String y, String z) {
+ /*   public Triangle(String x, String y, String z) {
         this.x.set(Double.parseDouble(x));
         this.y.set(Double.parseDouble(y));
         this.z.set(Double.parseDouble(z));
     }
-
+*/
     double perimeter()
     {
         return x.get()+y.get()+z.get();
