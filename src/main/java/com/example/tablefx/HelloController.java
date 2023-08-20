@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DoubleStringConverter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,6 +31,7 @@ public class HelloController {
     {
         try {
             makeTable(read("1.txt"));
+
         } catch (IOException e) {
             System.out.println(":((");
         }
@@ -54,16 +57,21 @@ public class HelloController {
         tableView.getColumns().clear();
         TableColumn<Triangle, Double> aColumn=new TableColumn<>("C");
         aColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
+        aColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         tableView.getColumns().add(aColumn);
         TableColumn<Triangle, Double> bColumn=new TableColumn<>("B");
         bColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
+        bColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         tableView.getColumns().add(bColumn);
         TableColumn<Triangle, Double> cColumn=new TableColumn<>("C");
         cColumn.setCellValueFactory(new PropertyValueFactory<>("z"));
+        cColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         tableView.getColumns().add(cColumn);
         TableColumn<Triangle, Double> columnArea = new TableColumn<>("Area");
         columnArea.setCellValueFactory(new PropertyValueFactory<>("area"));
+        tableView.getColumns().add(columnArea);
         tableView.setItems(triangleObservableList);
+        tableView.setEditable(true);
     }
 
 }

@@ -5,14 +5,14 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Triangle {
     SimpleDoubleProperty x,y,z;
-    private SimpleDoubleProperty perimeter = new SimpleDoubleProperty();
-    private SimpleDoubleProperty area = new SimpleDoubleProperty();
+    private final SimpleDoubleProperty perimeter = new SimpleDoubleProperty();
+    private final SimpleDoubleProperty area = new SimpleDoubleProperty();
+
 
     public Triangle(double x, double y, double z) {
         this.x = new SimpleDoubleProperty(x);
         this.y = new SimpleDoubleProperty(y);
         this.z = new SimpleDoubleProperty(z);
-
         {
             this.x.addListener((s1, o,n)->{
                 this.perimeter.set(perimeter());
@@ -27,6 +27,7 @@ public class Triangle {
                 this.area.set(area());
             });
         }
+
 
     }
 
@@ -51,12 +52,6 @@ public class Triangle {
         z.set(value);
     }
 
- /*   public Triangle(String x, String y, String z) {
-        this.x.set(Double.parseDouble(x));
-        this.y.set(Double.parseDouble(y));
-        this.z.set(Double.parseDouble(z));
-    }
-*/
     double perimeter()
     {
         return x.get()+y.get()+z.get();
