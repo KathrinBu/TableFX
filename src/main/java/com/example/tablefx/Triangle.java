@@ -5,9 +5,32 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Triangle {
     SimpleDoubleProperty x,y,z;
-    private final SimpleDoubleProperty perimeter = new SimpleDoubleProperty();
-    private final SimpleDoubleProperty area = new SimpleDoubleProperty();
+    private SimpleDoubleProperty perimeter = new SimpleDoubleProperty();
+    private SimpleDoubleProperty area = new SimpleDoubleProperty();
 
+    public double getPerimeter() {
+        return perimeter.get();
+    }
+
+    public SimpleDoubleProperty perimeterProperty() {
+        return perimeter;
+    }
+
+    public void setPerimeter(double perimeter) {
+        this.perimeter.set(perimeter);
+    }
+
+    public double getArea() {
+        return area.get();
+    }
+
+    public SimpleDoubleProperty areaProperty() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area.set(area);
+    }
 
     public Triangle(double x, double y, double z) {
         this.x = new SimpleDoubleProperty(x);
