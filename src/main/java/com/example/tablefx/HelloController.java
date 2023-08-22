@@ -55,7 +55,7 @@ public class HelloController {
     public void makeTable(ObservableList<Triangle> triangleObservableList)
     {
         tableView.getColumns().clear();
-        TableColumn<Triangle, Double> aColumn=new TableColumn<>("C");
+        TableColumn<Triangle, Double> aColumn=new TableColumn<>("A");
         aColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
         aColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         tableView.getColumns().add(aColumn);

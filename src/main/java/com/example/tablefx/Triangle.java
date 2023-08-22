@@ -33,10 +33,10 @@ public class Triangle {
     }
 
     public Triangle(double x, double y, double z) {
-        this.x = new SimpleDoubleProperty(x);
-        this.y = new SimpleDoubleProperty(y);
-        this.z = new SimpleDoubleProperty(z);
-        {
+        this.x = new SimpleDoubleProperty();
+        this.y = new SimpleDoubleProperty();
+        this.z = new SimpleDoubleProperty();
+
             this.x.addListener((s1, o,n)->{
                 this.perimeter.set(perimeter());
                 this.area.set(area());
@@ -49,9 +49,27 @@ public class Triangle {
                 this.perimeter.set(perimeter());
                 this.area.set(area());
             });
-        }
+        this.z.set(z);
+        this.y.set(y);
+        this.x.set(x);
 
 
+    }
+
+    public void setZ(double z) {
+        this.z.set(z);
+    }
+
+    public SimpleDoubleProperty xProperty() {
+        return x;
+    }
+
+    public SimpleDoubleProperty yProperty() {
+        return y;
+    }
+
+    public SimpleDoubleProperty zProperty() {
+        return z;
     }
 
     public double getX() {
